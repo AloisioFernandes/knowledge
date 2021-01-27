@@ -5,4 +5,5 @@ module.exports = (app) => {
 
   app.route('/users/:id')
     .put(app.api.user.save) // ação para atualizar usuário
+    .get(app.api.user.getById) // ação para buscar usuário específico por ID
 }
