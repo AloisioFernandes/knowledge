@@ -6,6 +6,7 @@ app.db = db //permite usar app.db para fazer select, update, delete... em outros
 
 consign()
   .then('./config/middlewares.js') //carrega dependências de um arquivo
+  .then('./api/validation.js')
   .then('./api')
   .then('./config/routes.js')
   .into(app) // injeta as dependências carregadas no app instância do express
