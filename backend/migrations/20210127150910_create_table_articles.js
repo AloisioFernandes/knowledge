@@ -5,7 +5,7 @@ exports.up = function(knex, Promise) {
     table.string('name').notNull()
     table.string('description', 1000).notNull()
     table.string('imageUrl', 1000)
-    table.binary('content').notNull()
+    table.binary('content').notNull() //tipo de dado para armazenar arquivos grandes, maiores que string como textos grandes, imagens, vídeos, áudios. Armazena até 4Gb.
     table.integer('userId').references('id')
       .inTable('users').notNull()
     table.integer('categoryId').references('id')
