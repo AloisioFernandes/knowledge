@@ -1,5 +1,8 @@
 const app = require('express')()
 const consign = require('consign')
+const db = require('./config/db')
+
+app.db = db //permite usar app.db para fazer select, update, delete... em outros arquivos
 
 consign()
   .then('./config/middlewares.js') //carrega dependências de um arquivo
