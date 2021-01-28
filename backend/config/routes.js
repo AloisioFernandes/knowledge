@@ -19,4 +19,16 @@ module.exports = (app) => {
     .get(app.api.category.getById) // busca categoria por ID
     .put(app.api.category.save) // atualiza categoria
     .delete(app.api.category.remove) // remove uma categoria
+
+  app.route('/articles')
+    .get(app.api.article.get) // busca todos os artigos
+    .post(app.api.article.save) // registra um novo artigo
+
+  app.route('/articles/:id')
+    .get(app.api.article.getById) // busca artigo por ID
+    .put(app.api.article.save) // atualiza artigo
+    .delete(app.api.article.remove) // remove um artigo
+
+  app.route('/categories/:id/articles')
+    .get(app.api.article.getByCategory) // busca artigos por categoria
 }
