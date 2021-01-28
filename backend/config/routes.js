@@ -1,4 +1,8 @@
 module.exports = (app) => {
+  app.post('/signup', app.api.user.save)
+  app.post('/signin', app.api.auth.signin)
+  app.post('/validateToken', app.api.auth.validateToken)
+
   app.route('/users')
     .post(app.api.user.save) // ação será feita pelo consign para registrar novo usuário
     .get(app.api.user.get) // ação para buscar dados de usuários
