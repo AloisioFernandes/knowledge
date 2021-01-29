@@ -14,6 +14,7 @@ module.exports = (app) => {
     .all(app.config.passport.authenticate()) // só permite a execução dos outros métodos se passar pela autenticação
     .put(admin(app.api.user.save)) // ação para atualizar usuário se for admin
     .get(admin(app.api.user.getById)) // ação para buscar usuário específico por ID se for admin
+    .delete(admin(app.api.user.remove)) // ação para (soft) deletar usuário se for admin
 
   app.route('/categories')
     .all(app.config.passport.authenticate()) // só permite a execução dos outros métodos se passar pela autenticação
