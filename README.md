@@ -5,3 +5,4 @@
  knex para migrations
  banco relacional postgreSQL
  banco não relacional mongoDB
+ autenticação com jwt
