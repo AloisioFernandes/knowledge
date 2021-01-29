@@ -13,6 +13,7 @@ consign()
   .then('./config/middlewares.js') //carrega dependências de um arquivo
   .then('./api/validation.js')
   .then('./api')
+  .then('./schedule')
   .then('./config/routes.js')
   .into(app) // injeta as dependências carregadas no app instância do express
 
