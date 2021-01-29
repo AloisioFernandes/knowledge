@@ -45,4 +45,8 @@ module.exports = (app) => {
   app.route('/categories/:id/articles')
     .all(app.config.passport.authenticate()) // só permite a execução dos outros métodos se passar pela autenticação
     .get(app.api.article.getByCategory) // busca artigos por categoria
+
+  app.route('/stats')
+    .all(app.config.passport.authenticate()) // só permite a execução dos outros métodos se passar pela autenticação
+    .get(app.api.stat.get) // busca a última estatística
 }
