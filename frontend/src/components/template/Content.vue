@@ -1,5 +1,7 @@
 <template>
-  <div class="content"></div>
+  <div class="content">
+    <router-view></router-view> <!-- Rederiza em Content o componente selecionado na rota -->
+  </div>
 </template>
 
 <script>
