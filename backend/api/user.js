@@ -12,6 +12,9 @@ module.exports = (app) => {
     const user = { ...req.body }
     if(req.params.id) user.id = req.params.id // user.id será o id que vier na requisição caso save seja usado para atualizar
 
+    if(!req.originalUrl.startsWith('/users')) user.admin = false // usuário criado a partir de signup não será admin (rota que não é /users)
+    if(!req.user || !req.user.admin) user.admin = false // se não tiver usuário logado ou se usuário não for admin, usuário criado não será admin
+
     try {
       existsOrError(user.name, 'Nome não informado')
       existsOrError(user.email, 'E-mail não informado')
