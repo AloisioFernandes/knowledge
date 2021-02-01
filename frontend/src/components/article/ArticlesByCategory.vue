@@ -46,6 +46,17 @@ export default {
       })
     }
   },
+  watch: {
+    $route(to) { // função que será chamada sempre que a rota mudar, assegurando a navegação
+      this.category.id = to.params.id
+      this.articles = []
+      this.page = 1
+      this.loadMore = true
+
+      this.getCategory()
+      this.getArticles()
+    }
+  },
   mounted() {
     this.category.id = this.$route.params.id
     this.getCategory()
