@@ -7,6 +7,8 @@ import ArticlesByCategory from '@/components/article/ArticlesByCategory'
 import ArticleById from '@/components/article/ArticleById'
 import Auth from '@/components/auth/Auth'
 
+import {userKey } from '@/global'
+
 Vue.use(VueRouter)
 
 const routes = [{
@@ -16,7 +18,8 @@ const routes = [{
 }, {
   name: 'adminPages',
   path: '/admin',
-  component: AdminPages
+  component: AdminPages,
+  meta: { requiresAdmin: true } // variável para verificação na rota
 }, {
   name: 'articlesByCategory',
   path: '/categories/:id/articles',
@@ -31,7 +34,20 @@ const routes = [{
   component: Auth
 }]
 
-export default new VueRouter({
+const router = new VueRouter({
   mode: 'history',
   routes
 })
+
+router.beforeEach((to, from, next) => {
+  const json = localStorage.getItem(userKey)
+
+  if(to.matched.some(record => record.meta.requiresAdmin)) { // verifica se rota requer que usuário seja admin
+    const user = JSON.parse(json)
+    user && user.admin ? next() : next({ path: '/' }) // segue para a rota desejada ou retorna para raiz
+  } else {
+    next()
+  }
+})
+
+export default router
