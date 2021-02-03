@@ -43,6 +43,10 @@ export default {
         name: 'articlesByCategory',
         params: { id: node.id }
       })
+
+      if(this.$mq === 'xs' || this.$mq === 'sm') { // fecha o menu se dispositivo tiver tela média ou pequena
+        this.$store.commit('toggleMenu', false)
+      }
     }
   },
   mounted() {
